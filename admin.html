@@ -1,95 +1,75 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <title>Admin - d4riusCONSULTING</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body { font-family:'Inter',sans-serif; background:#f5f7fa; margin:0; padding:20px; }
-    .card { background:white; padding:20px; border-radius:10px; max-width:600px; margin:auto; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
-    h2{text-align:center;}
-    input, button { padding:10px; margin:10px 0; width:100%; border-radius:6px; border:1px solid #ccc; font-size:16px; }
-    button { background:#2196F3; color:white; border:none; cursor:pointer; }
-    button:hover { background:#0b7dda; }
-    .entry { padding:10px; margin:10px 0; background:#f1f1f1; border-radius:6px; }
-    .danger { background:#f44336; }
-    .danger:hover { background:#d32f2f; }
-  </style>
+<meta charset="UTF-8">
+<title>Admin Chat d4rius</title>
+<style>
+body{font-family:sans-serif;background:#f5f5f5;padding:20px;}
+#login, #chat-box{max-width:500px;margin:auto;}
+input[type=password]{width:100%;padding:10px;margin:10px 0;font-size:16px;}
+button{padding:10px 20px;font-size:16px;cursor:pointer;}
+#messages{background:#fff;padding:20px;border-radius:12px;max-height:500px;overflow-y:auto;margin-top:20px;}
+.msg{padding:10px;margin-bottom:10px;border-radius:8px;}
+.client{background:#ff7a18;color:#fff;}
+.specialist{background:#0f2a44;color:#fff;}
+</style>
 </head>
 <body>
 
-<div class="card">
-  <h2>🔐 Admin - d4riusCONSULTING</h2>
-  <input type="password" id="parola-input" placeholder="Parola admin">
-  <button onclick="login()">Logare</button>
+<div id="login">
+<h2>Admin Login</h2>
+<input type="password" id="password" placeholder="Parolă Admin" />
+<button onclick="checkLogin()">Login</button>
+<p id="err" style="color:red"></p>
+</div>
 
-  <div id="admin-panel" style="display:none;">
-    <h3>📊 Vizualizări site</h3>
-    <div class="entry">
-      <strong>Vizualizări curente:</strong> <span id="views-count">0</span>
-    </div>
-
-    <h3>📋 Administrare date</h3>
-    <input type="text" id="nume-client" placeholder="Nume client">
-    <input type="number" id="valoare" placeholder="Valoare">
-    <button onclick="adaugaInregistrare()">Adaugă</button>
-
-    <div id="istoric"></div>
-  </div>
+<div id="chat-box" style="display:none;">
+<h2>Toate mesajele clienților</h2>
+<div id="messages"></div>
 </div>
 
 <script>
-  const ADMIN_PASSWORD = "d4CONSULTING"; // schimbă cu parola ta sigură
-  function login() {
-    const parola = document.getElementById('parola-input').value;
-    if(parola === ADMIN_PASSWORD) {
-      document.getElementById('parola-input').style.display='none';
-      document.querySelector('button').style.display='none';
-      document.getElementById('admin-panel').style.display='block';
-      incarcaVizualizari();
-      incarcaInregistrari();
-    } else alert('Parola greșită');
+const ADMIN_PASS = "d4rius123"; // Schimbă aici parola
+
+function checkLogin(){
+  const p = document.getElementById("password").value;
+  if(p === ADMIN_PASS){
+    document.getElementById("login").style.display = "none";
+    document.getElementById("chat-box").style.display = "block";
+    renderAllChats();
+  } else {
+    document.getElementById("err").innerText = "Parolă greșită!";
   }
+}
 
-  // Vizualizări site stocate în localStorage
-  function incarcaVizualizari() {
-    let views = localStorage.getItem("site_views") || 0;
-    document.getElementById("views-count").innerText = views;
-  }
+function renderAllChats(){
+  const allChats = JSON.parse(localStorage.getItem("allChats") || "{}");
+  const messagesDiv = document.getElementById("messages");
+  messagesDiv.innerHTML = "";
 
-  // Administrare înregistrări simple (localStorage)
-  function adaugaInregistrare() {
-    const nume = document.getElementById('nume-client').value.trim();
-    const valoare = parseInt(document.getElementById('valoare').value);
-    if(!nume || isNaN(valoare)) return alert('Completare invalidă');
+  Object.keys(allChats).forEach(sessionId => {
+    const chats = allChats[sessionId];
+    const sessionDiv = document.createElement("div");
+    sessionDiv.style.marginBottom = "20px";
+    sessionDiv.innerHTML = "<strong>Client: " + sessionId + "</strong>";
 
-    let date = JSON.parse(localStorage.getItem('inregistrari') || '[]');
-    date.push({ nume, valoare, data: new Date().toISOString().split('T')[0] });
-    localStorage.setItem('inregistrari', JSON.stringify(date));
-    incarcaInregistrari();
-  }
-
-  function incarcaInregistrari() {
-    const container = document.getElementById('istoric');
-    const date = JSON.parse(localStorage.getItem('inregistrari') || '[]');
-    container.innerHTML = '';
-    date.forEach((d,i) => {
-      const div = document.createElement('div');
-      div.className = 'entry';
-      div.innerHTML = `<span><strong>${d.nume}</strong></span> <span>${d.valoare}</span> <span>${d.data}</span> <button class="danger" onclick="sterge(${i})">Șterge</button>`;
-      container.appendChild(div);
+    chats.forEach(m => {
+      const div = document.createElement("div");
+      div.className = "msg " + (m.type === "client" ? "client" : "specialist");
+      div.innerText = (m.type === "client" ? "👤 " : "👨‍💼 ") + m.text;
+      sessionDiv.appendChild(div);
     });
-  }
 
-  function sterge(index) {
-    if(confirm('Sigur vrei să ștergi?')) {
-      let date = JSON.parse(localStorage.getItem('inregistrari') || '[]');
-      date.splice(index,1);
-      localStorage.setItem('inregistrari', JSON.stringify(date));
-      incarcaInregistrari();
-    }
+    messagesDiv.appendChild(sessionDiv);
+  });
+}
+
+// Optional: refresh automat la fiecare 2 sec
+setInterval(()=>{
+  if(document.getElementById("chat-box").style.display === "block"){
+    renderAllChats();
   }
+}, 2000);
 </script>
 
 </body>

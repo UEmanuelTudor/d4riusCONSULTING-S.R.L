@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>Chat Specialist</title>
+<style>
+body{font-family:sans-serif;margin:0;padding:20px;background:#f5f5f5;}
+h2{text-align:center;margin-bottom:20px;}
+#messages{background:#fff;padding:20px;border-radius:12px;max-height:500px;overflow-y:auto;}
+.msg{padding:10px;margin-bottom:10px;border-radius:12px;word-wrap:break-word;}
+.client{background:#ff7a18;color:#fff;text-align:left;}
+.specialist{background:#0f2a44;color:#fff;text-align:right;}
+#inputBox{display:flex;gap:10px;margin-top:10px;}
+#inputBox input{flex:1;padding:10px;font-size:14px;border-radius:8px;border:1px solid #ccc;}
+#inputBox button{padding:10px 20px;background:#0f2a44;color:#fff;border:none;border-radius:8px;cursor:pointer;}
+#inputBox button:hover{background:#ff7a18;}
+</style>
+</head>
+<body>
+
+<h2>Chat Specialist</h2>
+<div id="messages"></div>
+
+<div id="inputBox">
+  <input id="msgInput" placeholder="Scrie mesaj..." />
+  <button onclick="sendSpecialistMsg()">Trimite</button>
+</div>
+
+<script>
+// Preia sessionId din URL
+const urlParams = new URLSearchParams(window.location.search);
+const sessionId = urlParams.get("session");
+
+// DOM
+const messagesDiv = document.getElementById("messages");
+const input = document.getElementById("msgInput");
+
+// Functie render mesaje
+function renderMessages(){
+  const allChats = JSON.parse(localStorage.getItem("allChats") || "{}");
+  const chats = allChats[sessionId] || [];
+  messagesDiv.innerHTML = "";
+  chats.forEach(m=>{
+    const div = document.createElement("div");
+    div.className = "msg " + (m.type==="client"?"client":"specialist");
+    div.innerText = (m.type==="client"?"👤 Client: ":"👨‍💼 Tu: ") + m.text;
+    messagesDiv.appendChild(div);
+  });
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+// Trimite mesaj specialist
+function sendSpecialistMsg(){
+  const text = input.value.trim();
+  if(!text) return;
+  input.value = "";
+  const allChats = JSON.parse(localStorage.getItem("allChats") || "{}");
+  if(!allChats[sessionId]) allChats[sessionId] = [];
+  allChats[sessionId].push({type:"specialist", text, time:Date.now()});
+  localStorage.setItem("allChats", JSON.stringify(allChats));
+  renderMessages();
+}
+
+// Refresh automat la fiecare 300ms (live)
+setInterval(renderMessages, 300);
+renderMessages();
+</script>
+
+</body>
+</html>

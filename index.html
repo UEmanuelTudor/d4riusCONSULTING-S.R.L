@@ -8,7 +8,6 @@
 <meta name="description" content="d4riusCONSULTING S.R.L – servicii profesionale de contabilitate, salarizare și consultanță financiară în Târgoviște. Peste 15 ani de experiență. Solicită ofertă!">
 <meta name="robots" content="index, follow">
 
-<!-- Open Graph – pentru social media -->
 <meta property="og:title" content="d4riusCONSULTING S.R.L – Contabilitate & Consultanță Financiară">
 <meta property="og:description" content="Firmă de contabilitate și consultanță financiară cu experiență reală. Contactează‑ne pentru soluții personalizate.">
 <meta property="og:image" content="https://www.d4riusconsulting.ro/logo.png">
@@ -16,17 +15,6 @@
 <meta property="og:type" content="website">
 
 <link rel="icon" type="image/png" href="d4riusCONSULTING LOGO.png">
-
-<!-- Sitemap -->
-<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-
-<meta charset="UTF-8">
-<title>d4riusCONSULTING S.R.L | Contabilitate & Consultanță</title>
-<link rel="icon" type="image/png" href="d4riusCONSULTING LOGO.png">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Firmă de contabilitate și consultanță financiară bazată pe experiență profesională reală.">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -61,7 +49,6 @@ body{
 
 img{max-width:100%;display:block}
 
-/* HEADER */
 header{
   background:linear-gradient(135deg,var(--primary),var(--dark));
   position:sticky;
@@ -115,7 +102,6 @@ nav a::after{
 
 nav a:hover::after{width:100%}
 
-/* HERO */
 .hero{
   background:linear-gradient(135deg,var(--primary),var(--dark));
   padding:110px 0;
@@ -158,7 +144,6 @@ h1{
   box-shadow:0 25px 45px rgba(255,122,24,.6);
 }
 
-/* SECTIONS */
 section{padding:100px 0}
 
 .section-title{
@@ -171,7 +156,6 @@ h2{
   color:var(--primary);
 }
 
-/* GRID + CARD */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -208,7 +192,6 @@ h2{
   color:var(--primary);
 }
 
-/* ABOUT */
 .about{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -239,7 +222,6 @@ h2{
   font-size:32px;
 }
 
-/* BLOG */
 .blog-card h4{margin-bottom:12px}
 
 .blog-card span{
@@ -249,7 +231,6 @@ h2{
   margin-bottom:10px;
 }
 
-/* FOOTER */
 footer{
   background:linear-gradient(135deg,var(--dark),#000);
   color:#fff;
@@ -280,7 +261,6 @@ footer a:hover{color:#fff}
   opacity:.6;
 }
 
-/* ANIMATIONS */
 .reveal{
   opacity:0;
   transform:translateY(40px);
@@ -292,7 +272,6 @@ footer a:hover{color:#fff}
   transform:translateY(0);
 }
 
-/* RESPONSIVE */
 @media(max-width:900px){
   .hero-grid,.about,.footer-grid{grid-template-columns:1fr}
   nav ul{flex-wrap:wrap;justify-content:center}
@@ -300,7 +279,6 @@ footer a:hover{color:#fff}
   h1{font-size:38px}
 }
 
-/* CHATBOT */
 #chatbot-btn{
 position:fixed;bottom:20px;right:20px;background:#ff7a18;color:#fff;
 width:60px;height:60px;border-radius:50%;display:flex;
@@ -309,25 +287,92 @@ cursor:pointer;box-shadow:0 10px 25px rgba(0,0,0,.3);z-index:9999;
 }
 
 #chatbot-box{
-position:fixed;bottom:90px;right:20px;width:330px;background:#fff;
+position:fixed;bottom:90px;right:20px;width:360px;background:#fff;
 border-radius:16px;box-shadow:0 15px 40px rgba(0,0,0,.3);
 display:none;flex-direction:column;overflow:hidden;z-index:9999;
+max-height:550px;
 }
 
-#chatbot-header{background:#0f2a44;color:#fff;padding:14px;font-weight:600;}
-#chatbot-messages{padding:12px;height:280px;overflow-y:auto;font-size:14px;}
-.bot{background:#f1f1f1;padding:8px;border-radius:10px;margin-bottom:6px}
-.user{background:#ff7a18;color:#fff;padding:8px;border-radius:10px;margin-bottom:6px;text-align:right}
-.options button{margin:4px;padding:6px 10px;border:none;border-radius:12px;background:#0f2a44;color:#fff;cursor:pointer;font-size:12px}
-#chatbot-input{display:flex;border-top:1px solid #ddd;}
-#chatbot-input input{flex:1;border:none;padding:10px}
-#chatbot-input button{border:none;background:#ff7a18;color:#fff;padding:10px}
+#chatbot-header{background:#0f2a44;color:#fff;padding:16px;font-weight:600;font-size:16px;}
+
+#chatbot-quick-options{
+  padding:15px;
+  background:#f9fafb;
+  border-bottom:1px solid #e0e0e0;
+}
+
+.quick-btns{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:center;
+}
+
+.quick-btns button{
+  padding:8px 14px;
+  border:none;
+  border-radius:12px;
+  background:#0f2a44;
+  color:#fff;
+  cursor:pointer;
+  font-size:12px;
+  transition:0.3s;
+  font-weight:500;
+}
+
+.quick-btns button:hover{
+  background:#ff7a18;
+  transform:scale(1.05);
+}
+
+#chatbot-messages{padding:15px;flex:1;overflow-y:auto;font-size:14px;background:#f9fafb;}
+.msg{padding:10px 14px;border-radius:14px;margin-bottom:10px;max-width:80%;word-wrap:break-word;animation:slideIn 0.3s;}
+.bot{background:#e9ecef;color:#333;}
+.user{background:#ff7a18;color:#fff;margin-left:auto;text-align:right;}
+.client{background:#ff7a18;color:#fff;margin-left:auto;text-align:right;}
+
+
+.typing{
+  background:#e9ecef;
+  padding:12px 16px;
+  border-radius:14px;
+  margin-bottom:10px;
+  max-width:70px;
+  display:flex;
+  gap:4px;
+  align-items:center;
+}
+.typing span{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#666;
+  animation:bounce 1.4s infinite;
+}
+.typing span:nth-child(2){animation-delay:0.2s;}
+.typing span:nth-child(3){animation-delay:0.4s;}
+
+@keyframes slideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+#chatbot-input{display:flex;border-top:1px solid #ddd;background:#fff;}
+#chatbot-input input{flex:1;border:none;padding:14px;font-size:14px;}
+#chatbot-input button{border:none;background:#ff7a18;color:#fff;padding:14px 20px;cursor:pointer;font-weight:600;transition:0.3s;}
+#chatbot-input button:hover{background:#e66a10;}
+
+.contact-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+}
 </style>
 </head>
 
 <body>
-
-<!-- ===== SITE ORIGINAL ===== -->
 
 <header>
 <div class="container nav">
@@ -338,6 +383,7 @@ display:none;flex-direction:column;overflow:hidden;z-index:9999;
 <li><a href="#despre">Despre</a></li>
 <li><a href="#blog">Blog</a></li>
 <li><a href="#contact">Contact</a></li>
+<li><a href="#contact">Login</a></li>
 </ul>
 </nav>
 <div class="logo-box">
@@ -410,49 +456,35 @@ display:none;flex-direction:column;overflow:hidden;z-index:9999;
 
 <section id="contact" class="reveal">
   <div class="container">
-    <div class="section-title"><h2>Contact</h2></div>
+    <div class="section-title">
+      <h2>Contact</h2>
+    </div>
+
     <div class="grid">
       
-      <!-- EMAIL -->
       <div class="card">
         <h3>Email</h3>
-        <p><strong>d4riusconsulting.contact@gmail.com</strong></p>
-        <a href="mailto:d4riusconsulting.contact@gmail.com?subject=Contact%20d4riusCONSULTING&body=Salut,%20vreau%20informații%20despre%20serviciile%20voastre." class="btn contact-btn">
-          Trimite email
+        <a href="mailto:d4riusconsulting.contact@gmail.com" class="btn contact-btn">
+          d4riusconsulting.contact@gmail.com
         </a>
       </div>
-      
-      <!-- TELEFON -->
-    <div class="card">
-  <h3>Telefon</h3>
-  <p><strong>+40 770 430 731</strong></p>
-  <a href="tel:+40770430731" class="btn contact-btn">Apelează acum</a>
-</div>
-      
-      <!-- SEDIU -->
+
+      <div class="card">
+        <h3>Telefon</h3>
+        <a href="tel:+40770430731" class="btn contact-btn">
+          +40 770 430 731
+        </a>
+      </div>
+
       <div class="card">
         <h3>Sediu</h3>
         <p>Târgoviște, Dâmbovița</p>
       </div>
-      
+
     </div>
   </div>
 </section>
-
-<style>
-.contact-btn {
-  display: inline-flex;       /* permite click corect */
-  justify-content: center;
-  align-items: center;
-  width: 100%;                /* butoanele egale */
-  text-align: center;
-  padding: 15px 0;
-}
-</style>
-
-
-</div>
-</section>
+<li><a href="#contact">Contact</a></li>
 
 <footer>
 <div class="container footer-grid">
@@ -460,24 +492,28 @@ display:none;flex-direction:column;overflow:hidden;z-index:9999;
 <div><h3>d4riusfnCONSULTING S.R.L</h3><p>Contabilitate și consultanță financiară.</p></div>
 <div><a href="#servicii">Servicii</a><a href="#blog">Blog</a><a href="#contact">Contact</a></div>
 </div>
-<div class="copyright">© 202 d4riusfnCONSULTING S.R.L – Toate drepturile rezervate</div>
+<div class="copyright">© 2026 d4riusfnCONSULTING S.R.L – Toate drepturile rezervate</div>
 </footer>
 
-<!-- CHATBOT -->
 <div id="chatbot-btn">🤖</div>
 
 <div id="chatbot-box">
 <div id="chatbot-header">Asistent d4rius 🤖</div>
+
+<!-- BUTOANE MEREU SUS -->
+<div id="chatbot-quick-options">
+  <div class="quick-btns">
+    <button onclick="choose('servicii')">Servicii</button>
+    <button onclick="choose('pret')">Prețuri</button>
+    <button onclick="choose('program')">Program</button>
+    <button onclick="choose('contact')">Contact</button>
+  </div>
+</div>
+
 <div id="chatbot-messages">
-<div class="bot">Salut! Sunt asistentul d4rius 🙂 Cu ce te pot ajuta?</div>
-<div class="options">
-<button onclick="choose('servicii')">Servicii</button>
-<button onclick="choose('pret')">Prețuri</button>
-<button onclick="choose('program')">Program</button>
-<button onclick="choose('contact')">Contact</button>
-<button onclick="choose('altceva')">Altceva</button>
+<div class="msg bot">Salut! Sunt asistentul d4rius 🙂 Cu ce te pot ajuta?</div>
 </div>
-</div>
+
 <div id="chatbot-input">
 <input id="chatInput" placeholder="Scrie mesajul tău..." />
 <button onclick="sendMsg()">Trimite</button>
@@ -491,40 +527,129 @@ localStorage.setItem("site_views",views);
 document.getElementById("views").innerText=views;
 
 const reveals=document.querySelectorAll(".reveal");
-window.addEventListener("scroll",()=>{
-reveals.forEach(r=>{
-const top=r.getBoundingClientRect().top;
-if(top<window.innerHeight-100){r.classList.add("active")}
-});
-});
+window.addEventListener("scroll",()=>{reveals.forEach(r=>{const top=r.getBoundingClientRect().top;if(top<window.innerHeight-100){r.classList.add("active")}})});
 
-/* CHATBOT */
 const btn=document.getElementById("chatbot-btn");
 const box=document.getElementById("chatbot-box");
 const msgs=document.getElementById("chatbot-messages");
+const input = document.getElementById("chatInput");
+
+// RESET CHAT LA FIECARE REFRESH
+let sessionId = "session_" + Date.now();
+localStorage.setItem("chatSession", sessionId);
+
+// Șterge toate chat-urile vechi
+const allChats = JSON.parse(localStorage.getItem("allChats") || "{}");
+Object.keys(allChats).forEach(key => {
+  if(key !== sessionId) delete allChats[key];
+});
+localStorage.setItem("allChats", JSON.stringify(allChats));
+
+let lastCount = 0;
+let connectedToSpecialist = false;
+let typingTimer;
 
 btn.onclick=()=>box.style.display=box.style.display=="flex"?"none":"flex";
 
-function addBot(t){msgs.innerHTML+=`<div class="bot">${t}</div>`;msgs.scrollTop=msgs.scrollHeight;}
-function addUser(t){msgs.innerHTML+=`<div class="user">${t}</div>`;}
-
 function choose(type){
-addUser(type);
-if(type=="servicii") addBot("Oferim contabilitate, salarizare, consultanță și înființare SRL, PFA sau ONG. Spune-mi ce tip de firmă ai.");
-if(type=="pret") addBot("Prețul se stabilește în funcție de documente și activitate. Lasă câteva detalii și te ajut.");
-if(type=="program") addBot("Program: Luni–Vineri 10:00–18:00, Sâmbătă–Duminică 11:00–18:00.");
-if(type=="contact") addBot("Ne poți scrie la d4riusconsulting.contact@gmail.com sau apăsa Apelează din site.");
-if(type=="altceva") addBot("Scrie-mi exact ce ai nevoie și te ajut 🙂");
+  addMessage("client", type);
+  
+  if(type=="servicii"){
+    addMessage("bot", "Oferim contabilitate, salarizare, consultanță și înființare SRL, PFA sau ONG. Spune-mi ce tip de firmă ai.");
+  }
+  if(type=="pret"){
+    addMessage("bot", "Prețul se stabilește în funcție de documente și activitate. Lasă câteva detalii și te ajut.");
+  }
+  if(type=="program"){
+    addMessage("bot", "Program: Luni–Vineri 10:00–18:00, Sâmbătă–Duminică 11:00–18:00.");
+  }
+  if(type=="contact"){
+    addMessage("bot", "Ne poți scrie la d4riusconsulting.contact@gmail.com sau sună la +40 770 430 731.");
+  }
+  if(type=="specialist"){
+    connectedToSpecialist = true;
+    addMessage("bot", "Te conectez cu un specialist acum... 👨‍💼");
+    window.open("communication.html?session=" + sessionId, "specialistChat", "width=450,height=700");
+  }
 }
 
 function sendMsg(){
-let i=document.getElementById("chatInput");
-let t=i.value.trim();
-if(!t)return;
-addUser(t);
-i.value="";
-addBot("Am înțeles 👍 Îți mulțumim pentru mesaj!");
+  const text = input.value.trim();
+  if(!text) return;
+  
+  input.value = "";
+  
+  // Șterge typing înainte de trimitere
+  localStorage.removeItem("typing_client_" + sessionId);
+  
+  addMessage("client", text);
+  
+  if(!connectedToSpecialist){
+    addMessage("bot", "Am înțeles 👍 Îți mulțumesc pentru mesaj!");
+  }
 }
+
+function addMessage(type, text){
+  const chats = JSON.parse(localStorage.getItem("allChats") || "{}");
+  if(!chats[sessionId]) chats[sessionId] = [];
+  chats[sessionId].push({type, text, time: Date.now()});
+  localStorage.setItem("allChats", JSON.stringify(chats));
+  
+  // Notificare nouă pentru specialist
+  localStorage.setItem("newMsg_" + sessionId, Date.now().toString());
+  
+  renderMessages();
+}
+
+function renderMessages(){
+  const chats = JSON.parse(localStorage.getItem("allChats") || "{}");
+  const messages = chats[sessionId] || [];
+  
+  // Păstrează doar mesajul de bun venit + mesajele noi
+  msgs.innerHTML = '<div class="msg bot">Salut! Sunt asistentul d4rius 🙂 Cu ce te pot ajuta?</div>';
+  
+  messages.forEach(m => {
+    const div = document.createElement("div");
+    div.className = "msg " + m.type;
+    
+    if(m.type === "specialist"){
+      div.innerText = "👨‍💼 Specialist: " + m.text;
+    } else {
+      div.innerText = m.text;
+    }
+    
+    msgs.appendChild(div);
+  });
+  
+  // Verifică dacă specialistul scrie
+  const specialistTyping = localStorage.getItem("typing_specialist_" + sessionId);
+  if(specialistTyping === "yes"){
+    const typingDiv = document.createElement("div");
+    typingDiv.className = "typing";
+    typingDiv.innerHTML = "<span></span><span></span><span></span>";
+    msgs.appendChild(typingDiv);
+  }
+  
+  msgs.scrollTop = msgs.scrollHeight;
+  lastCount = messages.length;
+}
+
+// Typing indicator pentru client
+input.addEventListener("input", () => {
+  localStorage.setItem("typing_client_" + sessionId, "yes");
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(() => {
+    localStorage.removeItem("typing_client_" + sessionId);
+  }, 1000);
+});
+
+input.addEventListener("keypress", e => {
+  if(e.key === "Enter") sendMsg();
+});
+
+// Check mesaje noi la fiecare 
+setInterval(renderMessages, 300);
+renderMessages();
 </script>
 
 </body>
