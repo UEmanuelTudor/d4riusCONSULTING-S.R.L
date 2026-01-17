@@ -325,12 +325,23 @@ max-height:550px;
   transform:scale(1.05);
 }
 
+.quick-btns button.specialist-btn{
+  background:#25d366;
+  font-weight:600;
+  width:100%;
+  margin-top:8px;
+}
+
+.quick-btns button.specialist-btn:hover{
+  background:#20ba5a;
+}
+
 #chatbot-messages{padding:15px;flex:1;overflow-y:auto;font-size:14px;background:#f9fafb;}
 .msg{padding:10px 14px;border-radius:14px;margin-bottom:10px;max-width:80%;word-wrap:break-word;animation:slideIn 0.3s;}
 .bot{background:#e9ecef;color:#333;}
 .user{background:#ff7a18;color:#fff;margin-left:auto;text-align:right;}
 .client{background:#ff7a18;color:#fff;margin-left:auto;text-align:right;}
-
+.specialist{background:#25d366;color:#fff;}
 
 .typing{
   background:#e9ecef;
@@ -383,7 +394,6 @@ max-height:550px;
 <li><a href="#despre">Despre</a></li>
 <li><a href="#blog">Blog</a></li>
 <li><a href="#contact">Contact</a></li>
-<li><a href="#contact">Login</a></li>
 </ul>
 </nav>
 <div class="logo-box">
@@ -484,7 +494,6 @@ max-height:550px;
     </div>
   </div>
 </section>
-<li><a href="#contact">Contact</a></li>
 
 <footer>
 <div class="container footer-grid">
@@ -500,13 +509,13 @@ max-height:550px;
 <div id="chatbot-box">
 <div id="chatbot-header">Asistent d4rius 🤖</div>
 
-<!-- BUTOANE MEREU SUS -->
 <div id="chatbot-quick-options">
   <div class="quick-btns">
     <button onclick="choose('servicii')">Servicii</button>
     <button onclick="choose('pret')">Prețuri</button>
     <button onclick="choose('program')">Program</button>
     <button onclick="choose('contact')">Contact</button>
+    <button class="specialist-btn" onclick="choose('specialist')">💬 Discută cu un expert</button>
   </div>
 </div>
 
@@ -534,11 +543,9 @@ const box=document.getElementById("chatbot-box");
 const msgs=document.getElementById("chatbot-messages");
 const input = document.getElementById("chatInput");
 
-// RESET CHAT LA FIECARE REFRESH
 let sessionId = "session_" + Date.now();
 localStorage.setItem("chatSession", sessionId);
 
-// Șterge toate chat-urile vechi
 const allChats = JSON.parse(localStorage.getItem("allChats") || "{}");
 Object.keys(allChats).forEach(key => {
   if(key !== sessionId) delete allChats[key];
@@ -555,21 +562,30 @@ function choose(type){
   addMessage("client", type);
   
   if(type=="servicii"){
-    addMessage("bot", "Oferim contabilitate, salarizare, consultanță și înființare SRL, PFA sau ONG. Spune-mi ce tip de firmă ai.");
+    setTimeout(() => {
+      addMessage("bot", "Oferim contabilitate, salarizare, consultanță și înființare SRL, PFA sau ONG. Spune-mi ce tip de firmă ai.");
+    }, 800);
   }
   if(type=="pret"){
-    addMessage("bot", "Prețul se stabilește în funcție de documente și activitate. Lasă câteva detalii și te ajut.");
+    setTimeout(() => {
+      addMessage("bot", "Prețul se stabilește în funcție de documente și activitate. Lasă câteva detalii și te ajut.");
+    }, 800);
   }
   if(type=="program"){
-    addMessage("bot", "Program: Luni–Vineri 10:00–18:00, Sâmbătă–Duminică 11:00–18:00.");
+    setTimeout(() => {
+      addMessage("bot", "Program: Luni–Vineri 10:00–18:00, Sâmbătă–Duminică 11:00–18:00.");
+    }, 800);
   }
   if(type=="contact"){
-    addMessage("bot", "Ne poți scrie la d4riusconsulting.contact@gmail.com sau sună la +40 770 430 731.");
+    setTimeout(() => {
+      addMessage("bot", "Ne poți scrie la d4riusconsulting.contact@gmail.com sau sună la +40 770 430 731.");
+    }, 800);
   }
   if(type=="specialist"){
     connectedToSpecialist = true;
-    addMessage("bot", "Te conectez cu un specialist acum... 👨‍💼");
-    window.open("communication.html?session=" + sessionId, "specialistChat", "width=450,height=700");
+    setTimeout(() => {
+      addMessage("bot", "Te conectez cu un specialist acum... 👨‍💼 Scrie-ți întrebarea și vei primi răspuns în curând!");
+    }, 800);
   }
 }
 
@@ -578,14 +594,14 @@ function sendMsg(){
   if(!text) return;
   
   input.value = "";
-  
-  // Șterge typing înainte de trimitere
   localStorage.removeItem("typing_client_" + sessionId);
   
   addMessage("client", text);
   
   if(!connectedToSpecialist){
-    addMessage("bot", "Am înțeles 👍 Îți mulțumesc pentru mesaj!");
+    setTimeout(() => {
+      addMessage("bot", "Am înțeles 👍 Îți mulțumesc pentru mesaj!");
+    }, 800);
   }
 }
 
@@ -595,7 +611,6 @@ function addMessage(type, text){
   chats[sessionId].push({type, text, time: Date.now()});
   localStorage.setItem("allChats", JSON.stringify(chats));
   
-  // Notificare nouă pentru specialist
   localStorage.setItem("newMsg_" + sessionId, Date.now().toString());
   
   renderMessages();
@@ -605,7 +620,6 @@ function renderMessages(){
   const chats = JSON.parse(localStorage.getItem("allChats") || "{}");
   const messages = chats[sessionId] || [];
   
-  // Păstrează doar mesajul de bun venit + mesajele noi
   msgs.innerHTML = '<div class="msg bot">Salut! Sunt asistentul d4rius 🙂 Cu ce te pot ajuta?</div>';
   
   messages.forEach(m => {
@@ -621,7 +635,6 @@ function renderMessages(){
     msgs.appendChild(div);
   });
   
-  // Verifică dacă specialistul scrie
   const specialistTyping = localStorage.getItem("typing_specialist_" + sessionId);
   if(specialistTyping === "yes"){
     const typingDiv = document.createElement("div");
@@ -634,7 +647,6 @@ function renderMessages(){
   lastCount = messages.length;
 }
 
-// Typing indicator pentru client
 input.addEventListener("input", () => {
   localStorage.setItem("typing_client_" + sessionId, "yes");
   clearTimeout(typingTimer);
@@ -647,7 +659,6 @@ input.addEventListener("keypress", e => {
   if(e.key === "Enter") sendMsg();
 });
 
-// Check mesaje noi la fiecare 
 setInterval(renderMessages, 300);
 renderMessages();
 </script>
