@@ -51,11 +51,17 @@ img{max-width:100%;display:block}
 
 header{
   background:linear-gradient(135deg,var(--primary),var(--dark));
-  position:sticky;
+  position:fixed;
   top:0;
+  left:0;
+  right:0;
   z-index:999;
   backdrop-filter:blur(6px);
   box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+body{
+  padding-top:100px;
 }
 
 .nav{
@@ -282,8 +288,13 @@ footer a:hover{color:#fff}
 #chatbot-btn{
 position:fixed;bottom:20px;right:20px;background:#ff7a18;color:#fff;
 width:60px;height:60px;border-radius:50%;display:flex;
-align-items:center;justify-content:center;font-size:28px;
+align-items:center;justify-content:center;font-size:26px;
 cursor:pointer;box-shadow:0 10px 25px rgba(0,0,0,.3);z-index:9999;
+transition:0.3s;
+}
+
+#chatbot-btn:hover{
+transform:scale(1.1);
 }
 
 #chatbot-box{
@@ -379,6 +390,12 @@ max-height:550px;
   width: 100%;
   padding: 15px 0;
   text-align: center;
+  text-decoration:none;
+  font-size:16px;
+}
+
+.contact-btn:hover{
+  transform:translateY(-2px);
 }
 </style>
 </head>
@@ -473,16 +490,16 @@ max-height:550px;
     <div class="grid">
       
       <div class="card">
-        <h3>Email</h3>
+        <h3>📧 Email</h3>
         <a href="mailto:d4riusconsulting.contact@gmail.com" class="btn contact-btn">
-          d4riusconsulting.contact@gmail.com
+          Trimite Email
         </a>
       </div>
 
       <div class="card">
-        <h3>Telefon</h3>
+        <h3>📞 Telefon</h3>
         <a href="tel:+40770430731" class="btn contact-btn">
-          +40 770 430 731
+          Sună Acum
         </a>
       </div>
 
@@ -504,7 +521,11 @@ max-height:550px;
 <div class="copyright">© 2026 d4riusfnCONSULTING S.R.L – Toate drepturile rezervate</div>
 </footer>
 
-<div id="chatbot-btn">🤖</div>
+<div id="chatbot-btn">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+  </svg>
+</div>
 
 <div id="chatbot-box">
 <div id="chatbot-header">Asistent d4rius 🤖</div>
