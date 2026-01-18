@@ -285,117 +285,196 @@ footer a:hover{color:#fff}
   h1{font-size:38px}
 }
 
+/* CHATBOT STYLES */
 #chatbot-btn{
-position:fixed;bottom:20px;right:20px;background:#ff7a18;color:#fff;
-width:60px;height:60px;border-radius:50%;display:flex;
-align-items:center;justify-content:center;font-size:26px;
-cursor:pointer;box-shadow:0 10px 25px rgba(0,0,0,.3);z-index:9999;
-transition:0.3s;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:linear-gradient(135deg,#ff7a18,#ff9a3c);
+  color:#fff;
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(255,122,24,.5);
+  z-index:9999;
+  transition:0.3s;
+  animation:pulse 2s infinite;
 }
 
 #chatbot-btn:hover{
-transform:scale(1.1);
+  transform:scale(1.1);
+  box-shadow:0 15px 40px rgba(255,122,24,.7);
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.05)}
 }
 
 #chatbot-box{
-position:fixed;bottom:90px;right:20px;width:360px;background:#fff;
-border-radius:16px;box-shadow:0 15px 40px rgba(0,0,0,.3);
-display:none;flex-direction:column;overflow:hidden;z-index:9999;
-max-height:550px;
+  position:fixed;
+  bottom:100px;
+  right:20px;
+  width:380px;
+  max-width:calc(100vw - 40px);
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  z-index:9999;
+  max-height:600px;
 }
 
-#chatbot-header{background:#0f2a44;color:#fff;padding:16px;font-weight:600;font-size:16px;}
-
-#chatbot-quick-options{
-  padding:15px;
-  background:#f9fafb;
-  border-bottom:1px solid #e0e0e0;
-}
-
-.quick-btns{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  justify-content:center;
-}
-
-.quick-btns button{
-  padding:8px 14px;
-  border:none;
-  border-radius:12px;
-  background:#0f2a44;
+#chatbot-header{
+  background:linear-gradient(135deg,var(--primary),var(--dark));
   color:#fff;
-  cursor:pointer;
-  font-size:12px;
-  transition:0.3s;
-  font-weight:500;
-}
-
-.quick-btns button:hover{
-  background:#ff7a18;
-  transform:scale(1.05);
-}
-
-.quick-btns button.specialist-btn{
-  background:#25d366;
+  padding:20px;
   font-weight:600;
-  width:100%;
-  margin-top:8px;
-}
-
-.quick-btns button.specialist-btn:hover{
-  background:#20ba5a;
-}
-
-#chatbot-messages{padding:15px;flex:1;overflow-y:auto;font-size:14px;background:#f9fafb;}
-.msg{padding:10px 14px;border-radius:14px;margin-bottom:10px;max-width:80%;word-wrap:break-word;animation:slideIn 0.3s;}
-.bot{background:#e9ecef;color:#333;}
-.user{background:#ff7a18;color:#fff;margin-left:auto;text-align:right;}
-.client{background:#ff7a18;color:#fff;margin-left:auto;text-align:right;}
-.specialist{background:#25d366;color:#fff;}
-
-.typing{
-  background:#e9ecef;
-  padding:12px 16px;
-  border-radius:14px;
-  margin-bottom:10px;
-  max-width:70px;
+  font-size:18px;
   display:flex;
-  gap:4px;
+  justify-content:space-between;
   align-items:center;
 }
-.typing span{
-  display:inline-block;
-  width:8px;
-  height:8px;
+
+#close-chat{
+  background:transparent;
+  border:none;
+  color:#fff;
+  font-size:24px;
+  cursor:pointer;
+  padding:0;
+  width:30px;
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   border-radius:50%;
-  background:#666;
-  animation:bounce 1.4s infinite;
-}
-.typing span:nth-child(2){animation-delay:0.2s;}
-.typing span:nth-child(3){animation-delay:0.4s;}
-
-@keyframes slideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-
-#chatbot-input{display:flex;border-top:1px solid #ddd;background:#fff;}
-#chatbot-input input{flex:1;border:none;padding:14px;font-size:14px;}
-#chatbot-input button{border:none;background:#ff7a18;color:#fff;padding:14px 20px;cursor:pointer;font-weight:600;transition:0.3s;}
-#chatbot-input button:hover{background:#e66a10;}
-
-.contact-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 15px 0;
-  text-align: center;
-  text-decoration:none;
-  font-size:16px;
+  transition:0.3s;
 }
 
-.contact-btn:hover{
-  transform:translateY(-2px);
+#close-chat:hover{
+  background:rgba(255,255,255,0.2);
+}
+
+#chatbot-messages{
+  padding:20px;
+  flex:1;
+  overflow-y:auto;
+  font-size:15px;
+  background:linear-gradient(180deg,#f9fafb,#fff);
+  max-height:400px;
+}
+
+.msg{
+  padding:12px 16px;
+  border-radius:16px;
+  margin-bottom:12px;
+  animation:slideIn 0.4s;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.bot{
+  background:#e9ecef;
+  color:#333;
+  max-width:85%;
+}
+
+.user{
+  background:linear-gradient(135deg,#ff7a18,#ff9a3c);
+  color:#fff;
+  margin-left:auto;
+  text-align:right;
+  max-width:85%;
+}
+
+@keyframes slideIn{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+#chatbot-options{
+  padding:15px;
+  background:#fff;
+  border-top:2px solid #f0f0f0;
+  max-height:200px;
+  overflow-y:auto;
+}
+
+.option-btn{
+  width:100%;
+  padding:14px 18px;
+  margin-bottom:10px;
+  border:2px solid #e0e0e0;
+  border-radius:12px;
+  background:#fff;
+  color:var(--primary);
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+  text-align:left;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.option-btn:hover{
+  background:linear-gradient(135deg,#ff7a18,#ff9a3c);
+  color:#fff;
+  border-color:transparent;
+  transform:translateX(5px);
+}
+
+.option-btn:last-child{
+  margin-bottom:0;
+}
+
+.option-icon{
+  font-size:20px;
+}
+
+.back-btn{
+  background:var(--primary);
+  color:#fff;
+  border-color:var(--primary);
+}
+
+.back-btn:hover{
+  background:var(--dark);
+  border-color:var(--dark);
+  transform:translateX(-5px);
+}
+
+.contact-option{
+  background:linear-gradient(135deg,#25d366,#20ba5a);
+  color:#fff;
+  border:none;
+}
+
+.contact-option:hover{
+  background:linear-gradient(135deg,#20ba5a,#1fa855);
+  transform:scale(1.02);
+}
+
+@media(max-width:500px){
+  #chatbot-box{
+    width:calc(100vw - 30px);
+    right:15px;
+    bottom:90px;
+  }
+  
+  #chatbot-btn{
+    width:60px;
+    height:60px;
+    font-size:26px;
+  }
 }
 </style>
 </head>
@@ -432,12 +511,15 @@ max-height:550px;
 
 <section id="servicii" class="reveal">
 <div class="container">
-<div class="section-title"><h2>Servicii</h2></div>
+<div class="section-title">
+  <h2>Serviciile Noastre</h2>
+  <p style="max-width:700px;margin:20px auto 0;color:#666;">Soluții complete de contabilitate și consultanță adaptate nevoilor afacerii tale</p>
+</div>
 <div class="grid">
-<div class="card"><h3>Contabilitate primara</h3><p>Organizare documente lunare, pregatire documente lunare, verificare si analiza financiara documente.</p></div>
-<div class="card"><h3>Intocmire pontaje si salarizare</h3><p>State de plată și Reges online.</p></div>
-<div class="card"><h3>Consultanță in afaceri</h3><p>Suport decizional și ANAF.</p></div>
-<div class="card"><h3>Înființare firmă</h3><p>SRL / PFA / ONG.</p></div>
+<div class="card"><h3>✅ Contabilitate primară</h3><p>Organizare documente lunare, pregătire documente lunare, verificare și analiză financiară documente.</p></div>
+<div class="card"><h3>✅ Intocmire pontaje si salarizare</h3><p>State de plată și Reges online</p></div>
+<div class="card"><h3>✅ Consultanță in afaceri</h3><p>Suport decizional</p></div>
+<div class="card"><h3>✅ Înființare firme</h3><p>SRL, PFA, ONG</p></div>
 </div>
 </div>
 </section>
@@ -446,7 +528,7 @@ max-height:550px;
 <div class="container about">
 <div>
 <h2>Despre noi</h2>
-<p>d4riusfnCONSULTING S.R.L este o firmă nou-înființata.</p>
+<p>d4riusfnCONSULTING S.R.L este o firmă nou-înființată.</p>
 <p>Contabilul coordonator are <strong>peste 15 ani experiență</strong> profesională.</p>
 <div class="stats">
 <div class="stat"><h3>15+</h3><p>Ani experiență</p></div>
@@ -454,18 +536,21 @@ max-height:550px;
 <div class="stat"><h3 id="views">0</h3><p>Vizualizări site</p></div>
 </div>
 </div>
-<img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" style="border-radius:var(--radius)">
+<img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" style="border-radius:var(--radius)" alt="Echipa d4riusCONSULTING">
 </div>
 </section>
 
 <section id="blog" class="reveal">
 <div class="container">
-<div class="section-title"><h2>Blog</h2></div>
+<div class="section-title">
+  <h2>Articole Utile</h2>
+  <p style="max-width:700px;margin:20px auto 0;color:#666;">Sfaturi practice din experiența noastră de peste 15 ani</p>
+</div>
 <div class="grid">
 <div class="card blog-card">
-<h4>Când ai nevoie de un consultanta in afaceri</h4>
+<h4>Când ai nevoie de consultanță în afaceri</h4>
 <span>Ghid antreprenori</span>
-<p>Semne clare că este momentul să consultanta afacerii tale.</p>
+<p>Semne clare că este momentul să consulți afacerii tale.</p>
 </div>
 <div class="card blog-card">
 <h4>Diferența dintre contabilitate și consultanță</h4>
@@ -484,28 +569,36 @@ max-height:550px;
 <section id="contact" class="reveal">
   <div class="container">
     <div class="section-title">
-      <h2>Contact</h2>
+      <h2>Contactează-ne</h2>
+      <p style="max-width:600px;margin:20px auto 0;color:#666;">Suntem aici să te ajutăm! Alege modalitatea preferată de contact.</p>
     </div>
 
     <div class="grid">
       
       <div class="card">
         <h3>📧 Email</h3>
-        <a href="mailto:d4riusconsulting.contact@gmail.com" class="btn contact-btn">
+        <p style="margin-bottom:15px;color:#666;word-break:break-all;">d4riusconsulting.contact@gmail.com</p>
+        <a href="mailto:d4riusconsulting.contact@gmail.com" class="btn" style="text-decoration:none;display:inline-block;">
           Trimite Email
         </a>
       </div>
 
       <div class="card">
         <h3>📞 Telefon</h3>
-        <a href="tel:+40770430731" class="btn contact-btn">
+        <p style="margin-bottom:15px;color:#666;">+40 770 430 731</p>
+        <a href="tel:+40770430731" class="btn" style="text-decoration:none;display:inline-block;">
           Sună Acum
         </a>
       </div>
 
       <div class="card">
-        <h3>Sediu</h3>
-        <p>Târgoviște, Dâmbovița</p>
+        <h3>📍 Sediu</h3>
+        <p style="margin-bottom:15px;">Târgoviște, Dâmbovița</p>
+        <p style="font-size:14px;color:#666;line-height:1.6;">
+          <strong>Program:</strong><br>
+          Luni - Vineri: 10:00 - 18:00<br>
+          Sâmbătă - Duminică: 11:00 - 18:00
+        </p>
       </div>
 
     </div>
@@ -521,167 +614,293 @@ max-height:550px;
 <div class="copyright">© 2026 d4riusfnCONSULTING S.R.L – Toate drepturile rezervate</div>
 </footer>
 
+<!-- CHATBOT -->
 <div id="chatbot-btn">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-  </svg>
+  💬
 </div>
 
 <div id="chatbot-box">
-<div id="chatbot-header">Asistent d4rius 🤖</div>
-
-<div id="chatbot-quick-options">
-  <div class="quick-btns">
-    <button onclick="choose('servicii')">Servicii</button>
-    <button onclick="choose('pret')">Prețuri</button>
-    <button onclick="choose('program')">Program</button>
-    <button onclick="choose('contact')">Contact</button>
-    <button class="specialist-btn" onclick="choose('specialist')">💬 Discută cu un expert</button>
+  <div id="chatbot-header">
+    <span>🤖 Asistent d4rius</span>
+    <button id="close-chat">×</button>
   </div>
-</div>
 
-<div id="chatbot-messages">
-<div class="msg bot">Salut! Sunt asistentul d4rius 🙂 Cu ce te pot ajuta?</div>
-</div>
+  <div id="chatbot-messages">
+    <div class="msg bot">Bună! Sunt asistentul virtual d4rius 😊<br><br>Alege una dintre opțiuni pentru a afla mai multe:</div>
+  </div>
 
-<div id="chatbot-input">
-<input id="chatInput" placeholder="Scrie mesajul tău..." />
-<button onclick="sendMsg()">Trimite</button>
-</div>
+  <div id="chatbot-options"></div>
 </div>
 
 <script>
+// Vizualizări
 let views=localStorage.getItem("site_views");
 views=views?parseInt(views)+1:1;
 localStorage.setItem("site_views",views);
 document.getElementById("views").innerText=views;
 
+// Animații scroll
 const reveals=document.querySelectorAll(".reveal");
-window.addEventListener("scroll",()=>{reveals.forEach(r=>{const top=r.getBoundingClientRect().top;if(top<window.innerHeight-100){r.classList.add("active")}})});
-
-const btn=document.getElementById("chatbot-btn");
-const box=document.getElementById("chatbot-box");
-const msgs=document.getElementById("chatbot-messages");
-const input = document.getElementById("chatInput");
-
-let sessionId = "session_" + Date.now();
-localStorage.setItem("chatSession", sessionId);
-
-const allChats = JSON.parse(localStorage.getItem("allChats") || "{}");
-Object.keys(allChats).forEach(key => {
-  if(key !== sessionId) delete allChats[key];
-});
-localStorage.setItem("allChats", JSON.stringify(allChats));
-
-let lastCount = 0;
-let connectedToSpecialist = false;
-let typingTimer;
-
-btn.onclick=()=>box.style.display=box.style.display=="flex"?"none":"flex";
-
-function choose(type){
-  addMessage("client", type);
-  
-  if(type=="servicii"){
-    setTimeout(() => {
-      addMessage("bot", "Oferim contabilitate, salarizare, consultanță și înființare SRL, PFA sau ONG. Spune-mi ce tip de firmă ai.");
-    }, 800);
-  }
-  if(type=="pret"){
-    setTimeout(() => {
-      addMessage("bot", "Prețul se stabilește în funcție de documente și activitate. Lasă câteva detalii și te ajut.");
-    }, 800);
-  }
-  if(type=="program"){
-    setTimeout(() => {
-      addMessage("bot", "Program: Luni–Vineri 10:00–18:00, Sâmbătă–Duminică 11:00–18:00.");
-    }, 800);
-  }
-  if(type=="contact"){
-    setTimeout(() => {
-      addMessage("bot", "Ne poți scrie la d4riusconsulting.contact@gmail.com sau sună la +40 770 430 731.");
-    }, 800);
-  }
-  if(type=="specialist"){
-    connectedToSpecialist = true;
-    setTimeout(() => {
-      addMessage("bot", "Te conectez cu un specialist acum... 👨‍💼 Scrie-ți întrebarea și vei primi răspuns în curând!");
-    }, 800);
-  }
-}
-
-function sendMsg(){
-  const text = input.value.trim();
-  if(!text) return;
-  
-  input.value = "";
-  localStorage.removeItem("typing_client_" + sessionId);
-  
-  addMessage("client", text);
-  
-  if(!connectedToSpecialist){
-    setTimeout(() => {
-      addMessage("bot", "Am înțeles 👍 Îți mulțumesc pentru mesaj!");
-    }, 800);
-  }
-}
-
-function addMessage(type, text){
-  const chats = JSON.parse(localStorage.getItem("allChats") || "{}");
-  if(!chats[sessionId]) chats[sessionId] = [];
-  chats[sessionId].push({type, text, time: Date.now()});
-  localStorage.setItem("allChats", JSON.stringify(chats));
-  
-  localStorage.setItem("newMsg_" + sessionId, Date.now().toString());
-  
-  renderMessages();
-}
-
-function renderMessages(){
-  const chats = JSON.parse(localStorage.getItem("allChats") || "{}");
-  const messages = chats[sessionId] || [];
-  
-  msgs.innerHTML = '<div class="msg bot">Salut! Sunt asistentul d4rius 🙂 Cu ce te pot ajuta?</div>';
-  
-  messages.forEach(m => {
-    const div = document.createElement("div");
-    div.className = "msg " + m.type;
-    
-    if(m.type === "specialist"){
-      div.innerText = "👨‍💼 Specialist: " + m.text;
-    } else {
-      div.innerText = m.text;
+window.addEventListener("scroll",()=>{
+  reveals.forEach(r=>{
+    const top=r.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){
+      r.classList.add("active")
     }
-    
-    msgs.appendChild(div);
-  });
-  
-  const specialistTyping = localStorage.getItem("typing_specialist_" + sessionId);
-  if(specialistTyping === "yes"){
-    const typingDiv = document.createElement("div");
-    typingDiv.className = "typing";
-    typingDiv.innerHTML = "<span></span><span></span><span></span>";
-    msgs.appendChild(typingDiv);
+  })
+});
+
+// CHATBOT LOGIC
+const chatBtn = document.getElementById("chatbot-btn");
+const chatBox = document.getElementById("chatbot-box");
+const closeBtn = document.getElementById("close-chat");
+const messages = document.getElementById("chatbot-messages");
+const options = document.getElementById("chatbot-options");
+
+let currentMenu = "main";
+
+chatBtn.onclick = () => {
+  chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+  if(chatBox.style.display === "flex") {
+    showMainMenu();
   }
-  
-  msgs.scrollTop = msgs.scrollHeight;
-  lastCount = messages.length;
+};
+
+closeBtn.onclick = () => {
+  chatBox.style.display = "none";
+  // Resetare conversație
+  messages.innerHTML = '<div class="msg bot">Bună! Sunt asistentul virtual d4rius 😊<br><br>Alege una dintre opțiuni pentru a afla mai multe:</div>';
+  showMainMenu();
+};
+
+function addMessage(text, type = "bot") {
+  const div = document.createElement("div");
+  div.className = "msg " + type;
+  div.innerHTML = text;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
 }
 
-input.addEventListener("input", () => {
-  localStorage.setItem("typing_client_" + sessionId, "yes");
-  clearTimeout(typingTimer);
-  typingTimer = setTimeout(() => {
-    localStorage.removeItem("typing_client_" + sessionId);
-  }, 1000);
-});
+function showMainMenu() {
+  currentMenu = "main";
+  options.innerHTML = `
+    <button class="option-btn" onclick="showServicii()">
+      <span class="option-icon">📊</span>
+      <span>Servicii oferite</span>
+    </button>
+    <button class="option-btn" onclick="showPreturi()">
+      <span class="option-icon">💰</span>
+      <span>Prețuri și pachete</span>
+    </button>
+    <button class="option-btn" onclick="showProgram()">
+      <span class="option-icon">🕐</span>
+      <span>Program de lucru</span>
+    </button>
+    <button class="option-btn" onclick="showInfiintare()">
+      <span class="option-icon">🏢</span>
+      <span>Înființare firmă</span>
+    </button>
+    <button class="option-btn" onclick="showDocumente()">
+      <span class="option-icon">📄</span>
+      <span>Documente necesare</span>
+    </button>
+    <button class="option-btn" onclick="showFiscalitate()">
+      <span class="option-icon">📋</span>
+      <span>Fiscalitate și declarații</span>
+    </button>
+    <button class="option-btn" onclick="showOptimizare()">
+      <span class="option-icon">💡</span>
+      <span>Optimizare fiscală</span>
+    </button>
+    <button class="option-btn" onclick="showDespre()">
+      <span class="option-icon">👥</span>
+      <span>Despre noi</span>
+    </button>
+    <button class="option-btn" onclick="showIntrebari()">
+      <span class="option-icon">❓</span>
+      <span>Întrebări frecvente</span>
+    </button>
+    <button class="option-btn contact-option" onclick="showContact()">
+      <span class="option-icon">📞</span>
+      <span>Contactează-ne acum</span>
+    </button>
+  `;
+}
 
-input.addEventListener("keypress", e => {
-  if(e.key === "Enter") sendMsg();
-});
+function showServicii() {
+  addMessage("Ai ales: <strong>Servicii oferite</strong>", "user");
+  addMessage(`Oferim următoarele servicii profesionale:<br><br>
+    ✅ <strong>Contabilitate primară</strong> - organizare și verificare documente lunare<br>
+    ✅ <strong>Salarizare completă</strong> - state de plată și Reges online<br>
+    ✅ <strong>Consultanță financiară</strong> - suport decizional pentru afacerea ta<br>
+    ✅ <strong>Înființare firme</strong> - SRL, PFA, ONG (3-5 zile)<br>
+    📋 <strong>Toate serviciile includ:</strong><br>
+    • Monitorizare termene fiscale<br>
+    • Consultanță permanentă<br>
+    Alege o altă opțiune sau contactează-ne pentru detalii!`);
+  showBackButton();
+}
 
-setInterval(renderMessages, 300);
-renderMessages();
+function showPreturi() {
+  addMessage("Ai ales: <strong>Prețuri și pachete</strong>", "user");
+  addMessage(`Prețurile noastre sunt personalizate în funcție de:<br><br>
+    📌 Numărul de documente lunare<br>
+    📌 Tipul de activitate (SRL, PFA, ONG)<br>
+    📌 Numărul de salariați<br>
+    📌 Complexitatea contabilității<br><br>
+    <strong>Tarife orientative:</strong><br>
+    • PFA simplu: de la 150 RON/lună<br>
+    • SRL micro: de la 300 RON/lună<br>
+    • Salarizare: de la 50 RON/salariat<br><br>
+    💬 <strong>Mai multe detalii se discută la fața locului!</strong><br><br>
+    📞 Contactează-ne pentru o ofertă personalizată!`);
+  showBackButton();
+}
+
+function showProgram() {
+  addMessage("Ai ales: <strong>Program de lucru</strong>", "user");
+  addMessage(`📅 <strong>Programul nostru:</strong><br><br>
+    🕐 Luni - Vineri: 10:00 - 18:00<br>
+    🕐 Sâmbătă - Duminică: 11:00 - 18:00<br><br>
+    📧 Email: d4riusconsulting.contact@gmail.com<br>
+    📞 Telefon: +40 770 430 731<br><br>
+    Te așteptăm cu drag! 😊`);
+  showBackButton();
+}
+
+function showInfiintare() {
+  addMessage("Ai ales: <strong>Înființare firmă</strong>", "user");
+  addMessage(`Te ajutăm să înființezi:<br><br>
+    🏢 <strong>SRL</strong> - Societate cu Răspundere Limitată<br>
+    👤 <strong>PFA</strong> - Persoană Fizică Autorizată<br>
+    🤝 <strong>ONG</strong> - Organizație Non-Guvernamentală<br><br>
+    <strong>Servicii incluse:</strong><br>
+    ✓ Pregătire acte necesare<br>
+    ✓ Înregistrare la Registrul Comerțului<br>
+    ✓ Înregistrare fiscală ANAF<br>
+    ✓ Consultanță cod CAEN<br>
+    ✓ Deschidere cont bancar (asistență)<br><br>
+    📞 Sună-ne pentru mai multe detalii!`);
+  showBackButton();
+}
+
+function showDocumente() {
+  addMessage("Ai ales: <strong>Documente necesare</strong>", "user");
+  addMessage(`📄 <strong>Pentru contabilitate lunară:</strong><br>
+    • Facturi emise și primite<br>
+    • Extrase bancare<br>
+    • Chitanțe și bonuri fiscale<br>
+    • Contracte de colaborare<br>
+    • NIR-uri și avize<br><br>
+    📄 <strong>Pentru salarizare:</strong><br>
+    • Pontaje lunare<br>
+    • Concedii medicale<br>
+    • Adeverințe și documente justificative<br><br>
+    📩 Poți trimite documentele și prin email!`);
+  showBackButton();
+}
+
+function showFiscalitate() {
+  addMessage("Ai ales: <strong>Fiscalitate și declarații</strong>", "user");
+  addMessage(`📋 <strong>Te ajutăm cu:</strong><br><br>
+    ✅ Declarații fiscale lunare și anuale<br>
+    ✅ TVA, CAS, CASS<br>
+    ✅ Declarația unică (D112)<br>
+    ✅ Impozit profit și venit<br>
+    ✅ Verificare conformitate ANAF<br>
+    ✅ Consultanță fiscală personalizată<br><br>
+    📅 <strong>Termene importante:</strong><br>
+    • TVA: 25 ale lunii următoare<br>
+    • Declarație unică: 25 mai (anual)<br>
+    • Salarii: cel târziu data de 15<br><br>
+    ⏰ Nu ratezi niciun termen cu noi!<br><br>
+    📞 Contactează-ne pentru detalii!`);
+  showBackButton();
+}
+
+function showContact() {
+  addMessage("Ai ales: <strong>Contactează-ne</strong>", "user");
+  addMessage(`📞 <strong>Modalități de contact:</strong><br><br>
+    📧 Email: <a href="mailto:d4riusconsulting.contact@gmail.com" style="color:#ff7a18;font-weight:600;">d4riusconsulting.contact@gmail.com</a><br>
+    📞 Telefon: <a href="tel:+40770430731" style="color:#ff7a18;font-weight:600;">+40 770 430 731</a><br>
+    📍 Sediu: Târgoviște, Dâmbovița<br><br>
+    🕐 Program: Luni-Vineri 10:00-18:00<br><br>
+    Te așteptăm cu drag! 😊`);
+  showBackButton();
+}
+
+function showBackButton() {
+  options.innerHTML = `
+    <button class="option-btn back-btn" onclick="goBack()">
+      <span class="option-icon">⬅️</span>
+      <span>Înapoi la meniu</span>
+    </button>
+    <button class="option-btn contact-option" onclick="showContact()">
+      <span class="option-icon">📞</span>
+      <span>Contactează-ne</span>
+    </button>
+  `;
+}
+
+function goBack() {
+  addMessage("Înapoi la meniu principal", "user");
+  showMainMenu();
+}
+
+function showOptimizare() {
+  addMessage("Ai ales: <strong>Optimizare fiscală</strong>", "user");
+  addMessage(`💡 <strong>Soluții legale de optimizare:</strong><br><br>
+    ✅ Analiza structurii fiscale actuale<br>
+    ✅ Recomandări personalizate pentru reducerea taxelor<br>
+    ✅ Planificare fiscală pe termen lung<br>
+    ✅ Deduceri și scutiri fiscale aplicabile<br>
+    ✅ Alegerea celui mai avantajos regim fiscal<br>
+    ✅ Consultanță pentru dividend vs salariu<br><br>
+    <strong>Peste 15 ani experiență</strong> în optimizare fiscală legală!<br><br>
+    📞 Sună-ne pentru o consultație!`);
+  showBackButton();
+}
+
+function showDespre() {
+  addMessage("Ai ales: <strong>Despre noi</strong>", "user");
+  addMessage(`👥 <strong>d4riusCONSULTING S.R.L</strong><br><br>
+    Suntem o firmă <strong>nou-înființată</strong> cu o bază solidă de experiență profesională.<br><br>
+    🎯 <strong>Contabilul coordonator:</strong><br>
+    • Peste <strong>15 ani de experiență</strong> în domeniul financiar-contabil<br>
+    • Specializat în consultanță fiscală și optimizare<br>
+    • Expert în relația cu ANAF și rezolvarea situațiilor complexe<br><br>
+    💼 <strong>Valori fundamentale:</strong><br>
+    ✓ Profesionalism și dedicare totală<br>
+    ✓ Transparență în comunicare<br>
+    ✓ Soluții personalizate pentru fiecare client<br>
+    ✓ Conformitate 100% cu legislația<br>
+    ✓ Suport continuu și disponibilitate<br><br>
+    📍 <strong>Sediu:</strong> Târgoviște, Dâmbovița<br><br>
+    🤝 Partenerii tăi de încredere în contabilitate!`);
+  showBackButton();
+}
+
+function showIntrebari() {
+  addMessage("Ai ales: <strong>Întrebări frecvente</strong>", "user");
+  addMessage(`❓ <strong>Răspunsuri la cele mai comune întrebări:</strong><br><br>
+    <strong>📌 Cât durează înființarea unei firme?</strong><br>
+    De obicei 3-5 zile lucrătoare pentru SRL și 1-2 zile pentru PFA.<br><br>
+    <strong>📌 Ce documente trebuie să vă trimit lunar?</strong><br>
+    Facturi, extrase bancare, chitanțe, bonuri fiscale și pontaje pentru salariați.<br><br>
+    <strong>📌 Oferiți consultanță gratuită inițială?</strong><br>
+    Da! Prima discuție este gratuită pentru a înțelege nevoile tale.<br><br>
+    <strong>📌 Lucrați și cu firme din alte județe?</strong><br>
+    Da, lucrăm cu clienți din toată România, comunicarea se poate face online.<br><br>
+    <strong>📌 Ce se întâmplă dacă depășesc un termen?</strong><br>
+    Te anunțăm din timp și te ajutăm să eviți penalitățile. Noi monitorizăm toate termenele!<br><br>
+    <strong>📌 Pot schimba contabilul oricând?</strong><br>
+    Da, transferul se face simplu, ne ocupăm de toată documentația necesară.<br><br>
+    💬 Mai ai întrebări? Contactează-ne oricând!`);
+  showBackButton();
+}
+
+// Inițializare
+showMainMenu();
 </script>
 
 </body>

@@ -2,7 +2,7 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🔐 Admin Panel - d4riusCONSULTING</title>
 <style>
 * {
@@ -16,7 +16,6 @@ body {
   background: linear-gradient(135deg, #0f2a44, #0b1b2b);
   min-height: 100vh;
   padding: 20px;
-  overflow-x: hidden;
 }
 
 .login-screen {
@@ -49,12 +48,6 @@ body {
   border: 2px solid #e0e0e0;
   border-radius: 10px;
   font-size: 16px;
-  transition: 0.3s;
-}
-
-.login-box input:focus {
-  outline: none;
-  border-color: #ff7a18;
 }
 
 .login-box button {
@@ -67,12 +60,6 @@ body {
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.login-box button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(255,122,24,0.4);
 }
 
 .admin-container {
@@ -105,12 +92,6 @@ body {
   border-radius: 25px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.logout-btn:hover {
-  background: #e66a10;
-  transform: scale(1.05);
 }
 
 .main-content {
@@ -126,7 +107,6 @@ body {
   max-height: calc(100vh - 160px);
   overflow-y: auto;
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-  -webkit-overflow-scrolling: touch;
 }
 
 .clients-sidebar h2 {
@@ -155,11 +135,6 @@ body {
   border-left-color: #ff7a18;
 }
 
-.client-item.has-new {
-  border-left-color: #25d366;
-  animation: pulse 2s infinite;
-}
-
 .client-item .client-name {
   font-weight: 600;
   color: #0f2a44;
@@ -175,21 +150,11 @@ body {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: #ff0000;
+  background: #25d366;
   color: #fff;
-  width: 20px;
-  height: 20px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: bold;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.02); }
 }
 
 .chat-area {
@@ -204,9 +169,6 @@ body {
 .chat-header {
   padding: 20px;
   border-bottom: 2px solid #f0f0f0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .chat-header h3 {
@@ -214,19 +176,11 @@ body {
   font-size: 18px;
 }
 
-.typing-indicator-small {
-  font-size: 12px;
-  color: #25d366;
-  font-weight: 500;
-}
-
 .messages-area {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
   background: #f9fafb;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
 }
 
 .message {
@@ -235,7 +189,6 @@ body {
   margin-bottom: 12px;
   max-width: 70%;
   word-wrap: break-word;
-  animation: slideIn 0.3s;
 }
 
 .message.client {
@@ -254,42 +207,10 @@ body {
 .message.bot {
   background: #d1ecf1;
   color: #0c5460;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
   font-size: 13px;
   max-width: 90%;
-}
-
-.typing-dots {
-  background: #e9ecef;
-  padding: 12px 16px;
-  border-radius: 15px;
-  max-width: 70px;
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
-.typing-dots span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #666;
-  animation: bounce 1.4s infinite;
-}
-
-.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+  margin: 0 auto 12px;
 }
 
 .message-input {
@@ -297,9 +218,6 @@ body {
   padding: 20px;
   border-top: 2px solid #f0f0f0;
   gap: 10px;
-  background: #fff;
-  position: sticky;
-  bottom: 0;
 }
 
 .message-input input {
@@ -308,12 +226,6 @@ body {
   border: 2px solid #e0e0e0;
   border-radius: 25px;
   font-size: 15px;
-  transition: 0.3s;
-}
-
-.message-input input:focus {
-  outline: none;
-  border-color: #ff7a18;
 }
 
 .message-input button {
@@ -324,13 +236,6 @@ body {
   border-radius: 25px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
-  white-space: nowrap;
-}
-
-.message-input button:hover {
-  background: #e66a10;
-  transform: scale(1.05);
 }
 
 .empty-state {
@@ -342,131 +247,37 @@ body {
   color: #999;
 }
 
-.empty-state-icon {
-  font-size: 80px;
+.setup-notice {
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  padding: 20px;
+  border-radius: 15px;
   margin-bottom: 20px;
+  color: #856404;
 }
 
-.notification-sound {
-  display: none;
+.setup-notice h3 {
+  margin-bottom: 10px;
 }
 
-/* RESPONSIVE - TELEFON ȘI TABLETĂ */
+.setup-notice code {
+  background: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #d63384;
+}
+
 @media (max-width: 900px) {
-  body {
-    padding: 10px;
-  }
-  
-  .login-box {
-    padding: 30px 20px;
-  }
-  
-  .login-box h1 {
-    font-size: 22px;
-  }
-  
-  .header {
-    flex-direction: column;
-    gap: 10px;
-    padding: 15px;
-    margin-bottom: 15px;
-  }
-  
-  .header h1 {
-    font-size: 16px;
-    text-align: center;
-  }
-  
-  .logout-btn {
-    padding: 8px 20px;
-    font-size: 14px;
-  }
-  
-  .main-content {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-  
-  .clients-sidebar {
-    max-height: 200px;
-    padding: 15px;
-    margin-bottom: 0;
-  }
-  
-  .clients-sidebar h2 {
-    font-size: 16px;
-    margin-bottom: 15px;
-  }
-  
-  .client-item {
-    padding: 12px;
-  }
-  
-  .client-item .client-name {
-    font-size: 14px;
-  }
-  
-  .chat-area {
-    max-height: calc(100vh - 350px);
-    min-height: 450px;
-  }
-  
-  .chat-header {
-    padding: 15px;
-  }
-  
-  .chat-header h3 {
-    font-size: 16px;
-  }
-  
-  .messages-area {
-    padding: 15px;
-    min-height: 250px;
-  }
-  
-  .message {
-    max-width: 85%;
-    font-size: 14px;
-    padding: 10px 14px;
-  }
-  
-  .message-input {
-    padding: 12px;
-    gap: 8px;
-  }
-  
-  .message-input input {
-    padding: 12px 15px;
-    font-size: 14px;
-  }
-  
-  .message-input button {
-    padding: 12px 20px;
-    font-size: 14px;
-  }
-  
-  .empty-state-icon {
-    font-size: 60px;
-  }
-}
-
-/* FOARTE MIC - sub 500px */
-@media (max-width: 500px) {
-  .header h1 {
-    font-size: 14px;
-  }
-  
-  .clients-sidebar {
-    max-height: 180px;
-  }
-  
-  .chat-area {
-    min-height: 400px;
-  }
-  
-  .message-input button {
-    padding: 12px 16px;
-  }
+  body { padding: 10px; }
+  .header { flex-direction: column; gap: 10px; padding: 15px; }
+  .header h1 { font-size: 16px; text-align: center; }
+  .main-content { grid-template-columns: 1fr; gap: 15px; }
+  .clients-sidebar { max-height: 200px; padding: 15px; }
+  .chat-area { max-height: calc(100vh - 350px); min-height: 450px; }
+  .message { max-width: 85%; font-size: 14px; }
+  .message-input { padding: 12px; }
+  .message-input input { padding: 12px; font-size: 14px; }
+  .message-input button { padding: 12px 20px; font-size: 14px; }
 }
 </style>
 </head>
@@ -481,6 +292,20 @@ body {
 </div>
 
 <div class="admin-container" id="adminContainer">
+  
+  <div class="setup-notice" id="setupNotice">
+    <h3>⚠️ Configurare Firebase necesară!</h3>
+    <p>Pentru ca chat-ul să funcționeze între telefon și calculator, trebuie să configurezi Firebase:</p>
+    <ol style="margin: 15px 0; padding-left: 20px;">
+      <li>Mergi pe <a href="https://console.firebase.google.com/" target="_blank">Firebase Console</a></li>
+      <li>Creează un proiect nou (GRATUIT)</li>
+      <li>Activează "Realtime Database"</li>
+      <li>Copiază configurația Firebase și înlocuiește-o mai jos în cod (linia 520)</li>
+    </ol>
+    <p>👉 <strong>Este GRATUIT</strong> pentru chat-uri mici! Ai nevoie doar de un cont Google.</p>
+    <button onclick="document.getElementById('setupNotice').style.display='none'" style="margin-top: 15px; padding: 10px 20px; background: #ff7a18; color: #fff; border: none; border-radius: 8px; cursor: pointer;">Am înțeles, ascunde</button>
+  </div>
+
   <div class="header">
     <h1>📊 Panou Administrare - d4riusCONSULTING</h1>
     <button class="logout-btn" onclick="logout()">Deconectare</button>
@@ -495,12 +320,11 @@ body {
     <div class="chat-area">
       <div class="chat-header">
         <h3 id="chatTitle">Selectează o conversație</h3>
-        <span class="typing-indicator-small" id="clientTyping"></span>
       </div>
       
       <div class="messages-area" id="messagesArea">
         <div class="empty-state">
-          <div class="empty-state-icon">💬</div>
+          <div style="font-size: 80px; margin-bottom: 20px;">💬</div>
           <p>Selectează un client pentru a vedea conversația</p>
         </div>
       </div>
@@ -513,110 +337,107 @@ body {
   </div>
 </div>
 
-<audio id="notificationSound" class="notification-sound">
-  <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUKvm8LhoHwU7k9n0yHknBSh+zPLaizsKFmS57OihUBELTKXh8bllHgU2jdXzzn0pBSl/z/HajDwLGGm98OSbTQ0PUavl8bdiHwU8lNn0yHgmBSh+zPDajTsKF2W67OihUBEMTKXh8bllHgU2jdXzzn0pBSl/z/HajDwLGGm98OSbTQ0PUavl8bdiHwU8lNn0yHgmBSh+zPDajTsKF2W67OihUBEMTKXh8bllHgU2jdXzzn0pBSl/z/HajDwLGGm98OSbTQ0PUavl8bdiHwU8lNn0yHgmBSh+zPDajTsKF2W67OihUBEMTKXh8bllHgU2jdXzzn0pBSl/z/HajDwLGGm98OSbTQ0PUavl8bdiHwU8lNn0yHgmBSh+zPDajTsKF2W67OihUBEMTKXh8bllHgU2jdXzzn0pBSl/z/HajDwLGGm98OSbTQ0PUavl8bdiHwU8lNn0yHgmBSh+zPDajTsKF2W67OihUBEMTKXh8bllHgU2jdXzzn0pBSl/z/HajDwLGGm98OSbTQ0PUavl8bdiHwU8lNn0yHgmBSh+zPDajTsKF2W67OihUBEMTKXh8bllHgU2jdXzzn0pBSl/z/HajDwLGGm98OSbTQ0PUavl8bdiHwU8lNn0yHgmBSh+zPDajTsKF2W67OihUBEMTKXh8bllHgU2jdXzzn0pBSl/z/HajDwLGGm98OSbTQ0PUavl8bdiHwU8lNn0yHgmBSh+zPDajTsKF2W67OihUBEMTKXh8bllHgU2jdXzzn0pBSl/z/HajDwLGGm98OSbTQ0PUavl8bdiHwU8lNn0yHgmBSh+zPDajTsKF2W67OihUBEMTKXh8bllHgU2jdXzzn0pBSl/z/HajDwLGGm98OSbTQ0PUavl8bdiHwU8lNn0yHgmBSh+zPDajTsKF2W67OihUBEMTKXh8bllHgU2jdXzzn0pBSl/z/HajDwL" type="audio/wav">
-</audio>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 
 <script>
+// ============================================
+// CONFIGURARE FIREBASE - ÎNLOCUIEȘTE CU AL TĂU!
+// ============================================
+const firebaseConfig = {
+  apiKey: "AIzaSyDEMO-DEMO-DEMO-DEMO-DEMO",
+  authDomain: "demo-project.firebaseapp.com",
+  databaseURL: "https://demo-project.firebaseio.com",
+  projectId: "demo-project",
+  storageBucket: "demo-project.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123456789:web:abcdef123456"
+};
+
+// Inițializare Firebase
+let db;
+try {
+  firebase.initializeApp(firebaseConfig);
+  db = firebase.database();
+  console.log("✅ Firebase conectat!");
+} catch (error) {
+  console.error("❌ Eroare Firebase:", error);
+  alert("⚠️ Firebase nu este configurat! Urmează instrucțiunile de mai sus.");
+}
+
 const ADMIN_PASSWORD = "admin123";
 let currentSession = null;
-let lastMessageCounts = {};
-let typingTimer;
 
 function login() {
   const password = document.getElementById('passwordInput').value;
   if (password === ADMIN_PASSWORD) {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('adminContainer').style.display = 'block';
-    localStorage.setItem('specialist_online', Date.now().toString());
     loadClients();
-    setInterval(updateOnlineStatus, 3000);
-    setInterval(loadClients, 500);
   } else {
     alert('❌ Parolă incorectă!');
   }
 }
 
 function logout() {
-  localStorage.removeItem('specialist_online');
   document.getElementById('loginScreen').style.display = 'flex';
   document.getElementById('adminContainer').style.display = 'none';
   document.getElementById('passwordInput').value = '';
 }
 
-function updateOnlineStatus() {
-  localStorage.setItem('specialist_online', Date.now().toString());
-}
-
 function loadClients() {
-  const allChats = JSON.parse(localStorage.getItem('allChats') || '{}');
-  const clientsList = document.getElementById('clientsList');
+  if (!db) return;
   
-  if (Object.keys(allChats).length === 0) {
-    clientsList.innerHTML = '<p style="color:#999;text-align:center;padding:20px;">Nicio conversație activă</p>';
-    return;
-  }
-
-  let html = '';
-  
-  Object.keys(allChats).forEach(sessionId => {
-    const messages = allChats[sessionId] || [];
-    const lastMsg = messages[messages.length - 1];
-    const time = lastMsg ? new Date(lastMsg.time).toLocaleTimeString('ro-RO', {hour: '2-digit', minute: '2-digit'}) : '';
+  db.ref('chats').on('value', (snapshot) => {
+    const chats = snapshot.val() || {};
+    const clientsList = document.getElementById('clientsList');
     
-    const hasNew = !lastMessageCounts[sessionId] || messages.length > lastMessageCounts[sessionId];
-    const newCount = hasNew ? messages.length - (lastMessageCounts[sessionId] || 0) : 0;
-    
-    if (hasNew && sessionId !== currentSession && messages.length > 0) {
-      playNotification();
+    if (Object.keys(chats).length === 0) {
+      clientsList.innerHTML = '<p style="color:#999;text-align:center;padding:20px;">Nicio conversație activă</p>';
+      return;
     }
+
+    let html = '';
+    Object.keys(chats).forEach(sessionId => {
+      const messages = Object.values(chats[sessionId] || {});
+      const lastMsg = messages[messages.length - 1];
+      const time = lastMsg ? new Date(lastMsg.time).toLocaleTimeString('ro-RO', {hour: '2-digit', minute: '2-digit'}) : '';
+      
+      html += `
+        <div class="client-item ${currentSession === sessionId ? 'active' : ''}" onclick="selectClient('${sessionId}')">
+          <div class="client-name">Client ${sessionId.substring(8, 13)}</div>
+          <div class="client-time">${time}</div>
+          <div class="new-badge"></div>
+        </div>
+      `;
+    });
     
-    html += `
-      <div class="client-item ${currentSession === sessionId ? 'active' : ''} ${hasNew ? 'has-new' : ''}" 
-           onclick="selectClient('${sessionId}')">
-        <div class="client-name">Client ${sessionId.substring(8, 13)}</div>
-        <div class="client-time">${time}</div>
-        ${newCount > 0 ? `<div class="new-badge">${newCount}</div>` : ''}
-      </div>
-    `;
+    clientsList.innerHTML = html;
   });
-  
-  clientsList.innerHTML = html;
 }
 
 function selectClient(sessionId) {
   currentSession = sessionId;
-  const allChats = JSON.parse(localStorage.getItem('allChats') || '{}');
-  lastMessageCounts[sessionId] = (allChats[sessionId] || []).length;
-  
   document.getElementById('chatTitle').innerText = `Client ${sessionId.substring(8, 13)}`;
-  loadClients();
   loadMessages();
 }
 
 function loadMessages() {
-  if (!currentSession) return;
+  if (!currentSession || !db) return;
   
-  const allChats = JSON.parse(localStorage.getItem('allChats') || '{}');
-  const messages = allChats[currentSession] || [];
-  const messagesArea = document.getElementById('messagesArea');
-  
-  let html = '';
-  
-  messages.forEach(msg => {
-    html += `<div class="message ${msg.type}">${msg.text}</div>`;
+  db.ref('chats/' + currentSession).on('value', (snapshot) => {
+    const messages = snapshot.val() || {};
+    const messagesArea = document.getElementById('messagesArea');
+    
+    let html = '';
+    Object.values(messages).forEach(msg => {
+      html += `<div class="message ${msg.type}">${escapeHtml(msg.text)}</div>`;
+    });
+    
+    messagesArea.innerHTML = html || '<div class="empty-state"><div style="font-size: 80px; margin-bottom: 20px;">💬</div><p>Niciun mesaj încă</p></div>';
+    messagesArea.scrollTop = messagesArea.scrollHeight;
   });
-  
-  const clientTyping = localStorage.getItem('typing_client_' + currentSession);
-  if (clientTyping === 'yes') {
-    html += '<div class="typing-dots"><span></span><span></span><span></span></div>';
-    document.getElementById('clientTyping').innerText = '✍️ Clientul scrie...';
-  } else {
-    document.getElementById('clientTyping').innerText = '';
-  }
-  
-  messagesArea.innerHTML = html || '<div class="empty-state"><div class="empty-state-icon">💬</div><p>Niciun mesaj încă</p></div>';
-  messagesArea.scrollTop = messagesArea.scrollHeight;
 }
 
 function sendAdminMessage() {
@@ -628,50 +449,22 @@ function sendAdminMessage() {
   const input = document.getElementById('adminInput');
   const text = input.value.trim();
   
-  if (!text) return;
+  if (!text || !db) return;
   
   input.value = '';
-  localStorage.removeItem('typing_specialist_' + currentSession);
   
-  const allChats = JSON.parse(localStorage.getItem('allChats') || '{}');
-  if (!allChats[currentSession]) allChats[currentSession] = [];
-  
-  allChats[currentSession].push({
+  db.ref('chats/' + currentSession).push({
     type: 'specialist',
     text: text,
     time: Date.now()
   });
-  
-  localStorage.setItem('allChats', JSON.stringify(allChats));
-  localStorage.setItem('newMsg_' + currentSession, Date.now().toString());
-  
-  loadMessages();
 }
 
-document.getElementById('adminInput').addEventListener('input', () => {
-  if (!currentSession) return;
-  
-  localStorage.setItem('typing_specialist_' + currentSession, 'yes');
-  clearTimeout(typingTimer);
-  typingTimer = setTimeout(() => {
-    localStorage.removeItem('typing_specialist_' + currentSession);
-  }, 1000);
-});
-
-function playNotification() {
-  try {
-    const audio = document.getElementById('notificationSound');
-    audio.play().catch(e => console.log('Audio play failed'));
-  } catch (e) {
-    console.log('Notification sound error');
-  }
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
 }
-
-setInterval(() => {
-  if (currentSession) {
-    loadMessages();
-  }
-}, 300);
 </script>
 
 </body>
